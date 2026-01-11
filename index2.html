@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone Store Rio Ceballos</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  color:white;
+  background:#000;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
+  padding:25px;
+}
+header img{width:60px}
+.texto-header{font-size:24px;font-weight:bold}
+.sub-ciudad{font-size:14px;opacity:.8}
+
+/* MODELOS */
+.stock{text-align:center}
+.modelos{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  padding:10px;
+  align-items:center;
+}
+.modelo{text-align:center;cursor:pointer}
+.modelo img{
+  width:70px;height:70px;
+  object-fit:contain;
+  border-radius:50%;
+  border:2px solid #444;
+  background:white;
+  padding:5px;
+}
+.modelo.activo img{
+  animation:resaltar 1.5s infinite;
+  border-color:#39ff14;
+}
+@keyframes resaltar{
+  0%{box-shadow:0 0 5px #39ff14}
+  50%{box-shadow:0 0 18px #39ff14}
+  100%{box-shadow:0 0 5px #39ff14}
+}
+.modelo span{display:block;font-size:11px;margin-top:5px;font-weight:bold}
+.separador{width:2px;height:70px;background:white;opacity:.3}
+.ver-todos{
+  margin:10px;
+  padding:8px 15px;
+  border-radius:20px;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* PRODUCTOS */
+section{padding:15px}
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:15px;
+  max-width:600px;
+  margin:auto;
+
+}
+.card{
+  border:1px solid #333;
+  border-radius:18px;
+  padding:15px;
+  background:#0b0b0b;
+}
+.titulo{font-weight:bold;font-size:17px}
+.tag{padding:3px 8px;border-radius:8px;font-size:12px;margin-left:6px}
+.usado-tag{background:#222;color:#ccc}
+.sellado-tag{background:#39ff14;color:black}
+.bateria{
+  margin-top:6px;
+  display:inline-block;
+  background:#000;
+  border:1px solid #39ff14;
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:12px;
+}
+.precio{font-size:18px;font-weight:bold;margin:8px 0}
+.ver-cuotas{
+  background:#222;
+  border:1px solid #555;
+  color:white;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.boton{
+  display:block;
+  margin-top:10px;
+  padding:10px;
+  background:white;
+  color:black;
+  text-align:center;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+.sellado{display:none}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.modal-content{
+  background:#111;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+}
+.cuota{
+  background:#39ff14;
+  color:black;
+  padding:6px;
+  border-radius:8px;
+  margin:6px 0;
+
+.detalle {
+  font-size: 13px;
+  color: #aaa;
+  margin: 6px 0 4px 0;
+  background: #111;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid #333;
+
+.ps5-tag {
+  background: #0055ff;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-left: 6px;
+
+}
+
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="https://i.postimg.cc/FzMvJSsw/images-3-removebg-preview.png">
+  <div class="texto-header">
+    iPhone Store<br>
+    <span class="sub-ciudad">Rio Ceballos</span>
+  </div>
+</header>
+
+<div class="stock">
+<h2>STOCK DISPONIBLE</h2>
+
+<div class="modelos">
+
+<div class="modelo" onclick="mostrarPS5(this)">
+  <img src="https://i.postimg.cc/W14rj2N7/ps5-slim-digital-2.jpg" alt="PS5">
+  <span>PS5</span>
+</div>
+
+<div class="separador"></div>
+
+<div class="modelo" onclick="mostrarSellados(this)">
+  <img src="https://i.postimg.cc/PqzbwZHY/i_Phone_Device_List_Smart_Website_1280_x_853_i_Phone_17_Pro_1_c26420e4fa.webp">
+  <span>Sellados</span>
+</div>
+
+<div class="separador"></div>
+
+<div class="modelo" onclick="filtrarModelo('11',this)">
+  <img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-1.jpg">
+  <span>iPhone 11</span>
+</div>
+
+<div class="modelo" onclick="filtrarModelo('13',this)">
+  <img src="https://i.postimg.cc/90LZXJJ8/iphone-13-PNG27.png">
+  <span>iPhone 13</span>
+</div>
+
+<div class="modelo" onclick="filtrarModelo('13-pro',this)">
+  <img src="https://i.postimg.cc/2ynYhx9D/Apple-i-Phone-13-Pro-Graphite-1.webp">
+  <span>iPhone 13 Pro</span>
+</div>
+
+<div class="modelo" onclick="filtrarModelo('15-pro',this)">
+  <img src="https://i.postimg.cc/3JTMvmXY/fa213372-4456-489b-a2b3-9293592ddf43.png">
+  <span>iPhone 15 Pro</span>
+</div>
+
+<div class="modelo" onclick="filtrarModelo('15-pro-max',this)">
+  <img src="https://i.postimg.cc/XvT106xd/iphone-15-pro-max-blue-titanium.webp">
+  <span>iPhone 15 Pro Max</span>
+</div>
+
+<div class="modelo" onclick="filtrarModelo('16',this)">
+  <img src="https://i.postimg.cc/dtHBYKVP/d3e7282f-0020-4e25-ad70-cd833fbb0056.webp">
+  <span>iPhone 16</span>
+</div>
+
+<div class="modelo" onclick="filtrarModelo('16-pro-max',this)">
+  <img src="https://i.postimg.cc/kMj8Vv3Y/07-11-2024-03-11-36-iphone16promax1.png">
+  <span>iPhone 16 Pro Max</span>
+</div>
+
+</div>
+
+<button class="ver-todos" onclick="verTodos()">Ver todos</button>
+</div>
+
+<section>
+<div class="grid">
+
+
+<!-- USADOS -->
+<div class="card usado" data-modelo="11" data-precio="288990">
+  <div class="titulo">iPhone 11 64GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Product(Red)🔴</div>
+  <div class="precio">$288.990</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="13" data-precio="562770">
+  <div class="titulo">iPhone 13 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 85%</div>
+<div class="detalle">Product(Red)🔴</div>
+  <div class="precio">$562.770</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="13" data-precio="593190">
+  <div class="titulo">iPhone 13 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 89%</div>
+<div class="detalle">Color Midnight⚫</div>
+  <div class="precio">$593.190</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="13-pro" data-precio="745290">
+  <div class="titulo">iPhone 13 Pro 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 88%</div>
+<div class="detalle">Color sierra blue🔵</div>
+  <div class="precio">$745.290</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="13-pro" data-precio="714870">
+  <div class="titulo">iPhone 13 Pro 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 85%</div>
+<div class="detalle">Color sierra blue🔵</div>
+  <div class="precio">$714.870</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="15-Pro" data-precio="1.019.070">
+  <div class="titulo">iPhone 15 Pro 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 89%</div>
+<div class="detalle">Color Blue Titanium🔵</div>
+  <div class="precio">$1.019.070 </div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="15-pro" data-precio="1.049.490">
+  <div class="titulo">iPhone 15 Pro 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 90%</div>
+<div class="detalle">Color Black Titanium⚫</div>
+  <div class="precio">$1.049.490</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="15-pro" data-precio="1.049.490">
+  <div class="titulo">iPhone 15 Pro 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 91%</div>
+<div class="detalle">Color Black Titanium⚫</div>
+  <div class="precio">$1.049.490</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="15-pro-max" data-precio="1.125.540">
+  <div class="titulo">iPhone 15 Pro Max 256gb <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Color Black Titanium⚫Pequeñas rallas en la pantalla pedir fotos</div>
+  <div class="precio">$1.125.540</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16" data-precio="1.049.490">
+  <div class="titulo">iPhone 16 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Color Blue🔵</div>
+  <div class="precio">$1.049.490</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16" data-precio="1.064.700">
+  <div class="titulo">iPhone 16 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Color Blue🔵Garantia oficial 15/03</div>
+  <div class="precio">$1.064.700</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16" data-precio="1.110.330">
+  <div class="titulo">iPhone 16 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Color Blue🔵Garantia oficial 04/06</div>
+  <div class="precio">$1.110.330</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16" data-precio="1.110.330">
+  <div class="titulo">iPhone 16 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Color Blue🔵garantia oficial 07/06</div>
+  <div class="precio">$1.110.330</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16-pro-max" data-precio="1.521.000">
+  <div class="titulo">iPhone 16 Pro Max256GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 96%</div>
+<div class="detalle">Color Desert Titanium🟡</div>
+  <div class="precio">$1.521.000</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16-pro-max" data-precio="1.642.680">
+  <div class="titulo">iPhone 16 Pro Max 256GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 99%</div>
+<div class="detalle">Color Desert Titanium🟡153 ciclos de carga</div>
+  <div class="precio">$1.642.680</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16-pro-max" data-precio="1.673.110">
+  <div class="titulo">iPhone 16 Pro Max256GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Color White Titanium⚪Garantia oficial Apple 24/06/2026</div>
+  <div class="precio">$1.673.110</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="16-pro-max" data-precio="1.673.110">
+  <div class="titulo">iPhone 16 Pro Max256GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 100%</div>
+<div class="detalle">Color Desert Titanium🟡</div>
+  <div class="precio">$1.673.110</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<!-- SELLADOS -->
+
+<div class="card sellado" data-precio="2.083.770">
+  <div class="titulo">iPhone 17 <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">2.083.770</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="2.266.290">
+  <div class="titulo">iPhone 17 Pro Max <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">$2.266.290</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<!-- SELLADOS OTROS PRODUCTOS -->
+
+<div class="card sellado" data-precio="758979">
+  <div class="titulo">iPad 11th Gen 11" 128GB <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 499 · AR$ 758.979</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="1671579">
+  <div class="titulo">MacBook Air M4 256GB <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 1.099 · AR$ 1.671.579</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="2585700">
+  <div class="titulo">MacBook Pro M4 512GB <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 1.700 · AR$ 2.585.700</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="288990">
+  <div class="titulo">AirPods 4 con Cancelación de Ruido <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 190 · AR$ 288.990</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="68445">
+  <div class="titulo">Fuente Cargador Apple 20W <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 45 · AR$ 68.445</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="60840">
+  <div class="titulo">Cable USB-C a Lightning Original <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 40 · AR$ 60.840</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="439569">
+  <div class="titulo">Apple Watch SE 2da Gen 44mm <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 289 · AR$ 439.569</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="684450">
+  <div class="titulo">AirPods Max Midnight <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 450 · AR$ 684.450</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="182520">
+  <div class="titulo">Apple Pencil 2da Generación <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 120 · AR$ 182.520</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="182520">
+  <div class="titulo">Apple Pencil USB-C <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 120 · AR$ 182.520</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="228150">
+  <div class="titulo">AirTag Pack x4 <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 150 · AR$ 228.150</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="68445">
+  <div class="titulo">AirTag Individual <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 45 · AR$ 68.445</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="243360">
+  <div class="titulo">Parlante JBL Flip 7 Black <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 160 · AR$ 243.360</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<div class="card sellado" data-precio="243360">
+  <div class="titulo">Parlante JBL Flip 7 Azul <span class="tag sellado-tag">Sellado</span></div>
+  <div class="precio">USD 160 · AR$ 243.360</div>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+<!-- PS5 -->
+<div class="card ps5" data-precio="911.079" data-modelo="ps5">
+  <div class="titulo">PS5 Digital 1TB<span class="tag ps5-tag">Nuevo</span></div>
+  <div class="detalle">Sin lector de discos · 1 control</div>
+  <div class="precio">$911.079</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493585079522">Consultar</a>
+</div>
+
+	
+</div>
+</section>
+
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+const usados = document.querySelectorAll(".usado");
+const sellados = document.querySelectorAll(".sellado");
+const ps5 = document.querySelectorAll(".ps5");
+const modelos = document.querySelectorAll(".modelo");
+
+function activar(el){
+  modelos.forEach(m => m.classList.remove("activo"));
+  if(el) el.classList.add("activo");
+}
+
+function mostrarPS5(el){
+  activar(el);
+  usados.forEach(i => i.style.display = "none");
+  sellados.forEach(i => i.style.display = "none");
+  ps5.forEach(i => i.style.display = "block");
+}
+
+function mostrarSellados(el){
+  activar(el);
+  usados.forEach(i => i.style.display = "none");
+  sellados.forEach(i => i.style.display = "block");
+  ps5.forEach(i => i.style.display = "none");
+}
+
+function filtrarModelo(m, el){
+  activar(el);
+  usados.forEach(i => {
+    // Comparación insensible a mayúsculas/minúsculas
+    i.style.display = i.dataset.modelo.toLowerCase() === m.toLowerCase() ? "block" : "none";
+  });
+  sellados.forEach(i => i.style.display = "none");
+  ps5.forEach(i => i.style.display = "none");
+}
+
+function verTodos(){
+  activar(null);
+  usados.forEach(i => i.style.display = "block");
+  sellados.forEach(i => i.style.display = "none");
+  ps5.forEach(i => i.style.display = "none");
+}
+
+// Modal cuotas
+function abrirCuotas(btn){
+  const card = btn.closest(".card");
+  const precioBase = Number(card.dataset.precio.replace(/\./g, ""));
+  const c = document.getElementById("modalContent");
+
+  // Cálculos
+  const total3 = precioBase * 1.25;
+  const total6 = precioBase * 1.35;
+  const cuota3 = Math.round(total3 / 3);
+  const cuota6 = Math.round(total6 / 6);
+
+  c.innerHTML = `
+    <h3>Cuotas</h3>
+    <div class="cuota">3x $${cuota3.toLocaleString("es-AR")} (+25%)</div>
+    <div class="cuota">6x $${cuota6.toLocaleString("es-AR")} (+35%)</div>
+    <button class="cerrar" onclick="document.getElementById('modal').style.display='none'">Cerrar</button>
+  `;
+
+  document.getElementById("modal").style.display = "flex";
+}
+</script>
+
+
+</body>
+</html>
