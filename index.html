@@ -553,19 +553,16 @@ function verTodos(){
 // Modal cuotas
 function abrirCuotas(btn){
   const card = btn.closest(".card");
-  const precioBase = Number(card.dataset.precio); // ya viene limpio
+  const precioBase = Number(card.dataset.precio);
   const c = document.getElementById("modalContent");
 
-  const total3 = precioBase * 1.25;
-  const total6 = precioBase * 1.35;
-
-  const cuota3 = Math.round(total3 / 3);
-  const cuota6 = Math.round(total6 / 6);
+  const cuota3 = Math.round((precioBase * 1.25) / 3);
+  const cuota6 = Math.round((precioBase * 1.35) / 6);
 
   c.innerHTML = `
     <h3>Cuotas</h3>
-    <div class="cuota">3x $${cuota3.toLocaleString("es-AR")} (+25%)</div>
-    <div class="cuota">6x $${cuota6.toLocaleString("es-AR")} (+35%)</div>
+    <div class="cuota">3x $${cuota3.toLocaleString("es-AR")}</div>
+    <div class="cuota">6x $${cuota6.toLocaleString("es-AR")}</div>
     <button class="cerrar" onclick="document.getElementById('modal').style.display='none'">
       Cerrar
     </button>
@@ -573,6 +570,7 @@ function abrirCuotas(btn){
 
   document.getElementById("modal").style.display = "flex";
 }
+
 </script>
 
 </body>
