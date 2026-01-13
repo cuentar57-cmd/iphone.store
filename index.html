@@ -553,24 +553,40 @@ function verTodos(){
 // Modal cuotas
 function abrirCuotas(btn){
   const card = btn.closest(".card");
-  const precioBase = Number(card.dataset.precio);
-  const c = document.getElementById("modalContent");
+  if(!card) return alert("No encuentra la card");
 
-  const cuota3 = Math.round((precioBase * 1.25) / 3);
-  const cuota6 = Math.round((precioBase * 1.35) / 6);
+  let precio = card.dataset.precio;
 
-  c.innerHTML = `
+  // limpieza total por si acaso
+  precio = Number(precio.toString().replace(/\D/g,""));
+
+  if(!precio || precio <= 0){
+    alert("Precio inválido: " + card.dataset.precio);
+    return;
+  }
+
+  const total3 = Math.round(precio * 1.25);
+  const total6 = Math.round(precio * 1.35);
+
+  const cuota3 = Math.round(total3 / 3);
+  const cuota6 = Math.round(total6 / 6);
+
+  const modal = document.getElementById("modal");
+  const contenido = document.getElementById("modalContent");
+
+  contenido.innerHTML = `
     <h3>Cuotas</h3>
-    <div class="cuota">3x $${cuota3.toLocaleString("es-AR")}</div>
-    <div class="cuota">6x $${cuota6.toLocaleString("es-AR")}</div>
-    <button class="cerrar" onclick="document.getElementById('modal').style.display='none'">
-      Cerrar
-    </button>
+    <p>3x $${cuota3.toLocaleString("es-AR")}</p>
+    <p>6x $${cuota6.toLocaleString("es-AR")}</p>
+    <button onclick="cerrar()">Cerrar</button>
   `;
 
-  document.getElementById("modal").style.display = "flex";
+  modal.style.display = "flex";
 }
 
+function cerrar(){
+  document.getElementById("modal").style.display = "none";
+}
 </script>
 
 </body>
