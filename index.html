@@ -553,6 +553,7 @@ function mostrarPS5(el){
   usados.forEach(i => i.style.display = "none");
   sellados.forEach(i => i.style.display = "none");
   ps5.forEach(i => i.style.display = "block");
+  macbookApartado.style.display = "none";
 }
 
 function mostrarSellados(el){
@@ -560,6 +561,18 @@ function mostrarSellados(el){
   usados.forEach(i => i.style.display = "none");
   sellados.forEach(i => i.style.display = "block");
   ps5.forEach(i => i.style.display = "none");
+  macbookApartado.style.display = "none";
+}
+
+function mostrarMacbook(el){
+  activar(el);
+
+  usados.forEach(i => i.style.display = "none");
+  sellados.forEach(i => i.style.display = "none");
+  ps5.forEach(i => i.style.display = "none");
+
+  macbooks.forEach(i => i.style.display = "block");
+  macbookApartado.style.display = "block";
 }
 
 function filtrarModelo(m, el){
@@ -577,6 +590,7 @@ function verTodos(){
   usados.forEach(i => i.style.display = "block");
   sellados.forEach(i => i.style.display = "none");
   ps5.forEach(i => i.style.display = "none");
+  macbookApartado.style.display = "none";
 }
 
 // Modal cuotas
