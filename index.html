@@ -543,6 +543,15 @@ const macbooks = document.querySelectorAll(".macbook");
 const macbookApartado = document.getElementById("macbook-apartado");
 const modelos = document.querySelectorAll(".modelo");
 
+
+function ocultarTodo(){
+  usados.forEach(i => i.style.display = "none");
+  sellados.forEach(i => i.style.display = "none");
+  ps5.forEach(i => i.style.display = "none");
+  macbooks.forEach(i => i.style.display = "none");
+  macbookApartado.style.display = "none";
+}
+
 function activar(el){
   modelos.forEach(m => m.classList.remove("activo"));
   if(el) el.classList.add("activo");
@@ -550,49 +559,38 @@ function activar(el){
 
 function mostrarPS5(el){
   activar(el);
-  usados.forEach(i => i.style.display = "none");
-  sellados.forEach(i => i.style.display = "none");
+  ocultarTodo();
   ps5.forEach(i => i.style.display = "block");
-  macbookApartado.style.display = "none";
 }
-
+	
 function mostrarSellados(el){
   activar(el);
-  usados.forEach(i => i.style.display = "none");
-  ps5.forEach(i => i.style.display = "none");
-  macbooks.forEach(i => i.style.display = "none"); // 🔴 ESTA LÍNEA
+  ocultarTodo();
   sellados.forEach(i => i.style.display = "block");
-  macbookApartado.style.display = "none";
 }
 	
 function mostrarMacbook(el){
   activar(el);
-
-  usados.forEach(i => i.style.display = "none");
-  sellados.forEach(i => i.style.display = "none");
-  ps5.forEach(i => i.style.display = "none");
-
+  ocultarTodo();
   macbooks.forEach(i => i.style.display = "block");
   macbookApartado.style.display = "block";
 }
-
+	
 function filtrarModelo(m, el){
   activar(el);
+  ocultarTodo();
   usados.forEach(i => {
-    i.style.display = i.dataset.modelo.toLowerCase() === m.toLowerCase() ? "block" : "none";
+    i.style.display =
+      i.dataset.modelo.toLowerCase() === m.toLowerCase()
+      ? "block"
+      : "none";
   });
-  sellados.forEach(i => i.style.display = "none");
-  ps5.forEach(i => i.style.display = "none");
-  macbooks.forEach(i => i.style.display = "none"); // 🔴 ESTA LÍNEA
 }
-
+	
 function verTodos(){
   activar(null);
+  ocultarTodo();
   usados.forEach(i => i.style.display = "block");
-  sellados.forEach(i => i.style.display = "none");
-  ps5.forEach(i => i.style.display = "none");
-  macbooks.forEach(i => i.style.display = "none"); // 🔴 ESTA LÍNEA
-  macbookApartado.style.display = "none";
 }
 
 // Modal cuotas
