@@ -559,11 +559,12 @@ function mostrarPS5(el){
 function mostrarSellados(el){
   activar(el);
   usados.forEach(i => i.style.display = "none");
-  sellados.forEach(i => i.style.display = "block");
   ps5.forEach(i => i.style.display = "none");
+  macbooks.forEach(i => i.style.display = "none"); // 🔴 ESTA LÍNEA
+  sellados.forEach(i => i.style.display = "block");
   macbookApartado.style.display = "none";
 }
-
+	
 function mostrarMacbook(el){
   activar(el);
 
@@ -578,11 +579,11 @@ function mostrarMacbook(el){
 function filtrarModelo(m, el){
   activar(el);
   usados.forEach(i => {
-    // Comparación insensible a mayúsculas/minúsculas
     i.style.display = i.dataset.modelo.toLowerCase() === m.toLowerCase() ? "block" : "none";
   });
   sellados.forEach(i => i.style.display = "none");
   ps5.forEach(i => i.style.display = "none");
+  macbooks.forEach(i => i.style.display = "none"); // 🔴 ESTA LÍNEA
 }
 
 function verTodos(){
@@ -590,6 +591,7 @@ function verTodos(){
   usados.forEach(i => i.style.display = "block");
   sellados.forEach(i => i.style.display = "none");
   ps5.forEach(i => i.style.display = "none");
+  macbooks.forEach(i => i.style.display = "none"); // 🔴 ESTA LÍNEA
   macbookApartado.style.display = "none";
 }
 
