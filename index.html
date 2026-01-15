@@ -540,16 +540,13 @@ const usados = document.querySelectorAll(".usado");
 const sellados = document.querySelectorAll(".sellado");
 const ps5 = document.querySelectorAll(".ps5");
 const macbooks = document.querySelectorAll(".macbook");
-const macbookApartado = document.getElementById("macbook-apartado");
 const modelos = document.querySelectorAll(".modelo");
-
 
 function ocultarTodo(){
   usados.forEach(i => i.style.display = "none");
   sellados.forEach(i => i.style.display = "none");
   ps5.forEach(i => i.style.display = "none");
   macbooks.forEach(i => i.style.display = "none");
-  macbookApartado.style.display = "none";
 }
 
 function activar(el){
@@ -562,20 +559,19 @@ function mostrarPS5(el){
   ocultarTodo();
   ps5.forEach(i => i.style.display = "block");
 }
-	
+
 function mostrarSellados(el){
   activar(el);
   ocultarTodo();
   sellados.forEach(i => i.style.display = "block");
 }
-	
+
 function mostrarMacbook(el){
   activar(el);
   ocultarTodo();
   macbooks.forEach(i => i.style.display = "block");
-  macbookApartado.style.display = "block";
 }
-	
+
 function filtrarModelo(m, el){
   activar(el);
   ocultarTodo();
@@ -586,7 +582,7 @@ function filtrarModelo(m, el){
       : "none";
   });
 }
-	
+
 function verTodos(){
   activar(null);
   ocultarTodo();
