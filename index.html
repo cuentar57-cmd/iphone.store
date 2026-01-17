@@ -648,7 +648,6 @@ const ps5 = document.querySelectorAll(".ps5");
 const macbooks = document.querySelectorAll(".macbook");
 const ipad = document.querySelectorAll(".ipad");
 const airpods = document.querySelectorAll(".airpods");
-const airpods = document.querySelectorAll(".airpods");
 const cargadores = document.querySelectorAll(".cargadores");
 const VALOR_DOLAR = 1531;
 
@@ -714,7 +713,7 @@ function mostrarAirPods(el){
 function mostrarCargadores(el){
   activar(el);
   ocultarTodo();
-  Cargadores.forEach(i => i.style.display = "block");
+  cargadores.forEach(i => i.style.display = "block");
 }
 
 function filtrarModelo(m, el){
