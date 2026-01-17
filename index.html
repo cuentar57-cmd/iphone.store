@@ -258,6 +258,12 @@ section{padding:15px}
   <img src="https://i.postimg.cc/nzwpbZyb/IMG-9113.jpg" alt="airpods">
   <span>AirPods</span>
 </div>
+
+<div class="separador"></div>
+<div class="modelo" onclick="mostrarCargadores(this)">
+  <img src="https://i.postimg.cc/nzwpbZyb/IMG-9113.jpg" alt="cargadores">
+  <span>Cargadores</span></span>
+</div>
 </div>
 
 <button class="ver-todos" onclick="verTodos()">Ver todos</button>
@@ -539,7 +545,7 @@ section{padding:15px}
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
 
-<div class="card sellado" data-usd="45">
+<div class="card cargadores" data-usd="45">
   <div class="titulo">Fuente Cargador Apple 20W <span class="tag sellado-tag">Sellado</span></div>
   <div class="precio-ars"></div>
   <div class="precio-usd">USD 45</div>
@@ -547,7 +553,7 @@ section{padding:15px}
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
 
-<div class="card sellado" data-usd="40">
+<div class="card cargadores" data-usd="40">
   <div class="titulo">Cable USB-C a Lightning Original <span class="tag sellado-tag">Sellado</span></div>
   <div class="precio-ars"></div>
   <div class="precio-usd">USD 40</div>
@@ -643,7 +649,8 @@ const ps5 = document.querySelectorAll(".ps5");
 const macbooks = document.querySelectorAll(".macbook");
 const ipad = document.querySelectorAll(".ipad");
 const airpods = document.querySelectorAll(".airpods");
-const modelos = document.querySelectorAll(".modelo");
+const airpods = document.querySelectorAll(".airpods");
+const cargadores = document.querySelectorAll(".cargadores");
 const VALOR_DOLAR = 1531;
 
 function actualizarPrecios() {
@@ -702,7 +709,7 @@ function mostrarMacbook(el){
 function mostrarAirPods(el){
   activar(el);
   ocultarTodo();
-  macbooks.forEach(i => i.style.display = "block");
+  airpods.forEach(i => i.style.display = "block");
 }
 
 function filtrarModelo(m, el){
