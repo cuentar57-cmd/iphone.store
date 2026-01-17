@@ -642,6 +642,7 @@ const sellados = document.querySelectorAll(".sellado");
 const ps5 = document.querySelectorAll(".ps5");
 const macbooks = document.querySelectorAll(".macbook");
 const ipad = document.querySelectorAll(".ipad");
+const airpods = document.querySelectorAll(".airpods");
 const modelos = document.querySelectorAll(".modelo");
 const VALOR_DOLAR = 1531;
 
@@ -693,6 +694,12 @@ function mostrarSellados(el){
 }
 
 function mostrarMacbook(el){
+  activar(el);
+  ocultarTodo();
+  macbooks.forEach(i => i.style.display = "block");
+}
+
+function mostrarAirPods(el){
   activar(el);
   ocultarTodo();
   macbooks.forEach(i => i.style.display = "block");
