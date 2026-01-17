@@ -223,28 +223,33 @@ section{padding:15px}
     <div class="separador"></div>
 
     <div class="modelo" onclick="mostrarMacbook(this)">
-      <img src="https://i.postimg.cc/VLRb3C5p/macbook-air-m3.webp">
+      <img src="https://i.postimg.cc/jSKSZqYL/macbook_air_vs_macbook_pro_cuales_son_sus_diferencias.webp">
       <span>MacBook</span>
     </div>
 
     <div class="modelo" onclick="mostrarIpad(this)">
-      <img src="https://i.postimg.cc/0yKkVY9B/ipad-pro.webp">
+      <img src="https://i.postimg.cc/9MLzFjjZ/IMG_9022.jpg">
       <span>iPad</span>
     </div>
 
     <div class="modelo" onclick="mostrarAirPods(this)">
-      <img src="https://i.postimg.cc/y8gX0BqC/airpods-pro.webp">
+      <img src="https://i.postimg.cc/nzwpbZyb/IMG_9113.jpg">
       <span>AirPods</span>
     </div>
 
     <div class="modelo" onclick="mostrarCargadores(this)">
-      <img src="https://i.postimg.cc/hjdWwwqN/IMG-9117.jpg">
+      <img src="https://i.postimg.cc/hjdWwwqN/IMG_9117.jpg">
       <span>Cargadores</span>
     </div>
 
     <div class="modelo" onclick="mostrarPS5(this)">
-      <img src="https://i.postimg.cc/8z7F3bYX/ps5.webp">
+      <img src="https://i.postimg.cc/W14rj2N7/ps5_slim_digital_2.jpg">
       <span>PS5</span>
+    </div>
+
+	  <div class="modelo" onclick="Apple Pencil(this)">
+      <img src="https://i.postimg.cc/Xv6SyWGt/IMG-9138.webp">
+      <span>ApplePencil</span>
     </div>
 
   </div> <!-- 🔴 CIERRE CORRECTO DE .modelos -->
@@ -560,7 +565,7 @@ section{padding:15px}
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
 
-<div class="card sellado" data-usd="120">
+<div class="card applepencil" data-usd="120">
   <div class="titulo">Apple Pencil 2da Generación <span class="tag sellado-tag">Sellado</span></div>
   <div class="precio-ars"></div>
   <div class="precio-usd">USD 120</div>
@@ -568,7 +573,7 @@ section{padding:15px}
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
 
-<div class="card sellado" data-usd="120">
+<div class="card applepencil" data-usd="120">
   <div class="titulo">Apple Pencil USB-C <span class="tag sellado-tag">Sellado</span></div>
   <div class="precio-ars"></div>
   <div class="precio-usd">USD 120</div>
@@ -634,6 +639,7 @@ const macbooks = document.querySelectorAll(".macbook");
 const ipad = document.querySelectorAll(".ipad");
 const airpods = document.querySelectorAll(".airpods");
 const cargadores = document.querySelectorAll(".cargadores");
+const applepencil = document.querySelectorAll(".applepencil");
 const modelos = document.querySelectorAll(".modelo");
 
 const VALOR_DOLAR = 1531;
@@ -707,6 +713,11 @@ function mostrarCargadores(el){
   cargadores.forEach(i => i.style.display = "block");
 }
 
+function mostrarApplePencil(el){
+  activar(el);
+  ocultarTodo();
+  applepencil.forEach(i => i.style.display = "block");
+}
 function filtrarModelo(m, el){
   activar(el);
   ocultarTodo();
