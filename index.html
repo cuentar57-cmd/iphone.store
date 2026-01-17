@@ -173,26 +173,7 @@ section{padding:15px}
 
 }
 
-.ver-todos-container{
-  display:flex;
-  justify-content:center;
-  margin:12px 0 20px;
-}
 
-.ver-todos-btn{
-  background:#111;
-  color:#fff;
-  border:1px solid #333;
-  padding:8px 22px;
-  border-radius:20px;
-  font-size:14px;
-  cursor:pointer;
-}
-
-.ver-todos-btn:hover{
-  background:#1db954;
-  border-color:#1db954;
-}
 </style>
 </head>
 
@@ -285,12 +266,11 @@ section{padding:15px}
   <span>Cargadores</span>
 </div>
 
-<div class="ver-todos-container">
-  <button class="ver-todos-btn" onclick="verTodos()">
+<div style="display:flex; justify-content:center; margin:15px 0;">
+  <button class="ver-todos" onclick="verTodos()">
     Ver todos
   </button>
 </div>
-
 <section>
 <div class="grid">
 
