@@ -173,6 +173,18 @@ section{padding:15px}
 
 }
 
+.dolar-hoy{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:6px 14px;
+  border-radius:20px;
+  background:#111;
+  border:1px solid #39ff14;
+  color:#39ff14;
+  font-size:14px;
+  font-weight:bold;
+}
+
 
 </style>
 </head>
@@ -188,6 +200,9 @@ section{padding:15px}
 </header>
 
 <div class="stock">
+	<div class="dolar-hoy">
+  💵 Dólar hoy: <strong id="valorDolar"></strong>
+</div>
   <h2>STOCK DISPONIBLE</h2>
 
   <!-- ICONOS / FILTROS -->
@@ -659,8 +674,10 @@ const applewatch = document.querySelectorAll(".applewatch");
 const airtag = document.querySelectorAll(".airtag");
 const parlantejbl = document.querySelectorAll(".parlantejbl");
 const modelos = document.querySelectorAll(".modelo");
-
 const VALOR_DOLAR = 1515;
+
+document.getElementById("valorDolar").textContent =
+  `$${VALOR_DOLAR.toLocaleString("es-AR")}`;
 
 /* ================= PRECIOS ================= */
 function actualizarPrecios() {
@@ -804,3 +821,4 @@ verTodos();
 
 </body>
 </html>
+
