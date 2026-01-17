@@ -649,8 +649,11 @@ const macbooks = document.querySelectorAll(".macbook");
 const ipad = document.querySelectorAll(".ipad");
 const airpods = document.querySelectorAll(".airpods");
 const cargadores = document.querySelectorAll(".cargadores");
+const modelos = document.querySelectorAll(".modelo");
+
 const VALOR_DOLAR = 1531;
 
+/* ================= PRECIOS ================= */
 function actualizarPrecios() {
   document.querySelectorAll(".card[data-usd]").forEach(card => {
     const usd = Number(card.dataset.usd);
@@ -662,23 +665,13 @@ function actualizarPrecios() {
     }
   });
 }
-
-function mostrarIpad(el){
-  activar(el);
-  ocultarTodo();
-  document.querySelectorAll(".ipad").forEach(i => {
-    i.style.display = "block";
-  });
-}
-// Ejecutar al cargar
 actualizarPrecios();
 
+/* ================= FILTROS ================= */
 function ocultarTodo(){
-  usados.forEach(i => i.style.display = "none");
-  sellados.forEach(i => i.style.display = "none");
-  ps5.forEach(i => i.style.display = "none");
-  macbooks.forEach(i => i.style.display = "none");
-  ipad.forEach(i => i.style.display = "none");
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display = "none";
+  });
 }
 
 function activar(el){
@@ -686,10 +679,11 @@ function activar(el){
   if(el) el.classList.add("activo");
 }
 
-function mostrarPS5(el){
-  activar(el);
-  ocultarTodo();
-  ps5.forEach(i => i.style.display = "block");
+function verTodos(){
+  activar(null);
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display = "block";
+  });
 }
 
 function mostrarSellados(el){
@@ -698,10 +692,22 @@ function mostrarSellados(el){
   sellados.forEach(i => i.style.display = "block");
 }
 
+function mostrarPS5(el){
+  activar(el);
+  ocultarTodo();
+  ps5.forEach(i => i.style.display = "block");
+}
+
 function mostrarMacbook(el){
   activar(el);
   ocultarTodo();
   macbooks.forEach(i => i.style.display = "block");
+}
+
+function mostrarIpad(el){
+  activar(el);
+  ocultarTodo();
+  ipad.forEach(i => i.style.display = "block");
 }
 
 function mostrarAirPods(el){
@@ -727,38 +733,21 @@ function filtrarModelo(m, el){
   });
 }
 
-function verTodos(){
-  activar(null);
-  ocultarTodo();
-  usados.forEach(i => i.style.display = "block");
-}
-
-// Modal cuotas
+/* ================= MODAL CUOTAS ================= */
 function abrirCuotas(btn){
   const card = btn.closest(".card");
-  if(!card) return alert("No encuentra la card");
+  if(!card) return;
 
   let precioARS = 0;
 
-  // 1️⃣ Si tiene USD → convertir
   if(card.dataset.usd){
     precioARS = Number(card.dataset.usd) * VALOR_DOLAR;
   }
-  // 2️⃣ Si tiene precio fijo en pesos
-  else if(card.dataset.precio){
-    precioARS = Number(card.dataset.precio.toString().replace(/\D/g,""));
-  }
 
-  if(!precioARS || precioARS <= 0){
-    alert("Precio inválido");
-    return;
-  }
+  if(!precioARS) return alert("Precio inválido");
 
-  const total3 = Math.round(precioARS * 1.25);
-  const total6 = Math.round(precioARS * 1.35);
-
-  const cuota3 = Math.round(total3 / 3);
-  const cuota6 = Math.round(total6 / 6);
+  const cuota3 = Math.round(precioARS * 1.25 / 3);
+  const cuota6 = Math.round(precioARS * 1.35 / 6);
 
   const modal = document.getElementById("modal");
   const contenido = document.getElementById("modalContent");
@@ -777,6 +766,7 @@ function cerrar(){
   document.getElementById("modal").style.display = "none";
 }
 
+/* ================= INIT ================= */
 verTodos();
 </script>
 
