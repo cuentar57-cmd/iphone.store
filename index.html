@@ -214,10 +214,19 @@ section{padding:15px}
     </div>
 
     <div class="separador"></div>
+    <div class="modelo" onclick="filtrarModelo('13',this)">
+      <img src="https://i.postimg.cc/90LZXJJ8/iphone_13_PNG27.png">
+      <span>iPhone 13</span>
+    </div>
 
     <div class="modelo" onclick="filtrarModelo('13-pro',this)">
       <img src="https://i.postimg.cc/2ynYhx9D/Apple-i-Phone-13-Pro-Graphite-1.webp">
       <span>iPhone 13 Pro</span>
+    </div>
+
+	<div class="modelo" onclick="filtrarModelo('14',this)">
+      <img src="https://i.postimg.cc/tTt7Cthh/0bb0c6a5_603e_4338_8527_1fda8f2df096.png">
+      <span>iPhone 14</span>
     </div>
 
     <div class="modelo" onclick="filtrarModelo('14-pro',this)">
@@ -308,13 +317,22 @@ section{padding:15px}
 
 </div>
 <!-- USADOS -->
-
-<div class="card usado" data-modelo="13-pro" data-usd="490">
-  <div class="titulo">iPhone 13 Pro 128GB <span class="tag usado-tag">Usado</span></div>
-  <div class="bateria">🔋 88%</div>
-<div class="detalle">Color sierra blue🔵</div>
+<div class="card usado" data-modelo="13" data-usd="370">
+  <div class="titulo">iPhone 13 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 91%</div>
+<div class="detalle">Color Blue🔵</div>
   <div class="precio-ars"></div>
-<div class="precio-usd">USD 490</div>
+<div class="precio-usd">USD 370</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="13" data-usd="370">
+  <div class="titulo">iPhone 13 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 90%</div>
+<div class="detalle">Color White⚪️</div>
+  <div class="precio-ars"></div>
+<div class="precio-usd">USD 370</div>
   <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
@@ -329,6 +347,25 @@ section{padding:15px}
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
 
+<div class="card usado" data-modelo="13-pro" data-usd="490">
+  <div class="titulo">iPhone 13 Pro 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 88%</div>
+<div class="detalle">Color sierra blue🔵</div>
+  <div class="precio-ars"></div>
+<div class="precio-usd">USD 490</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
+</div>
+
+<div class="card usado" data-modelo="14" data-usd="390">
+  <div class="titulo">iPhone 14 128GB <span class="tag usado-tag">Usado</span></div>
+  <div class="bateria">🔋 86%</div>
+<div class="detalle">Color Midnight⚫️</div>
+  <div class="precio-ars"></div>
+<div class="precio-usd">USD 390</div>
+  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
+  <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
+</div>
 
 <div class="card usado" data-modelo="14-pro" data-usd="520">
   <div class="titulo">iPhone 14 Pro 128GB <span class="tag usado-tag">Usado</span></div>
@@ -416,16 +453,6 @@ section{padding:15px}
 <div class="detalle">Color Black Titanium⚫Pequeñas rallas en la pantalla pedir fotos</div>
   <div class="precio-ars">$1.125.540</div>
 <div class="precio-usd">USD 740</div>
-  <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
-  <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
-</div>
-
-<div class="card usado" data-modelo="16" data-usd="690">
-  <div class="titulo">iPhone 16 128GB <span class="tag usado-tag">Usado</span></div>
-  <div class="bateria">🔋 100%</div>
-<div class="detalle">Color Blue🔵</div>
-  <div class="precio-ars"></div>
-<div class="precio-usd">USD 690</div>
   <button class="ver-cuotas" onclick="abrirCuotas(this)">Ver cuotas</button>
   <a class="boton" href="https://wa.me/5493543576506">Consultar</a>
 </div>
@@ -689,7 +716,7 @@ const applewatch = document.querySelectorAll(".applewatch");
 const airtag = document.querySelectorAll(".airtag");
 const parlantejbl = document.querySelectorAll(".parlantejbl");
 const modelos = document.querySelectorAll(".modelo");
-const VALOR_DOLAR = 1515;
+const VALOR_DOLAR = 1520;
 
 document.getElementById("valorDolar").textContent =
   `$${VALOR_DOLAR.toLocaleString("es-AR")}`;
